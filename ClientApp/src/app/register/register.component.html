@@ -1,0 +1,58 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+<div class="overlay">
+  <div class="loginform">
+    <div class="d-flex justify-content-center h-100">
+      <div class="card">
+        <div class="card-header">
+          <h3>Sign Up</h3>
+          <div class="d-flex justify-content-end social_icon">
+            <span><i class="fab fa-facebook-square"></i></span>
+            <span><i class="fab fa-google-plus-square"></i></span>
+            <span><i class="fab fa-twitter-square"></i></span>
+          </div>
+        </div>
+        <div class="card-body">
+          <form *ngIf="!isSuccessful" #f="ngForm" (ngSubmit)="f.form.valid && submit()" name="form" novalidate>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="bi bi-people"></i></span>
+              </div>
+              <input required type="text" username class="form-control" placeholder="Username" name="username" [(ngModel)]="form.username"  minlength="3" maxlength="20" #username="ngModel"/>
+              <div class="alert-danger" *ngIf="username.errors && f.submitted">
+                <div *ngIf="username.errors?.required">Username is required</div>
+                <div *ngIf="username.errors?.minlength">Username must be at least 3 characters </div>
+                <div *ngIf="username.errors?.maxlength">Username must be at most 20 characters </div>
+              </div>
+            </div>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="bi bi-key"></i></span>
+              </div>
+              <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="form.password" required password minlength="6" #password="ngModel" />
+              <div class="alert-danger" *ngIf="password.errors && f.submitted">
+                <div *ngIf="password.errors?.required">Password is required</div>
+                <div *ngIf="password.errors?.minlength"> Password must be at least 6 characters
+                </div>
+              </div>
+            </div>
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+              </div>
+              <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="form.email" required email #email="ngModel"/>
+              <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                <div *ngIf="email.errors?.required">Email is required</div>
+                <div *ngIf="email.errors?.email"> Email must be a valid email address </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Create" class="btn float-right login_btn" />
+            </div>
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">Signup failed!<br />{{ errorMessage }}</div>
+          </form>
+          <div class="alert alert-success" *ngIf="isSuccessful"> Welcome <b>{{form.controls.username.value}}!</b><br>Your registration has been successfully completed!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

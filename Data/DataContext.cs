@@ -11,12 +11,6 @@ namespace BettingProject.Data
         
         }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer(
-        //        @"Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True");
-        //}
-
-        public DbSet<User> User { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

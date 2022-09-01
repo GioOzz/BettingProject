@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BettingProject.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -21,26 +21,26 @@ namespace BettingProject.Controllers
             _context = context;
         }
 
-        // GET: api/Users
+        // GET: Users
         [HttpGet]
         public ActionResult<IEnumerable<User>> GetUser()
         {
-            if (_context.User == null)
+            if (_context.Users == null)
             {
                 return NotFound();
             }
-            return _context.User.ToList();
+            return _context.Users.ToList();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(string id)
         {
-            if (_context.User == null)
+            if (_context.Users == null)
             {
                 return NotFound();
             }
-            var user = await _context.User.FindAsync(id);
+            var user = await _context.Users.FindAsync(id);
 
             if (user == null)
             {
@@ -86,11 +86,11 @@ namespace BettingProject.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            if (_context.User == null)
+            if (_context.Users == null)
             {
                 return Problem("Entity set 'DataContext.User'  is null.");
             }
-            _context.User.Add(user);
+            _context.Users.Add(user);
             try
             {
                 await _context.SaveChangesAsync();
@@ -114,17 +114,17 @@ namespace BettingProject.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(string id)
         {
-            if (_context.User == null)
+            if (_context.Users == null)
             {
                 return NotFound();
             }
-            var user = await _context.User.FindAsync(id);
+            var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
 
-            _context.User.Remove(user);
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -132,7 +132,7 @@ namespace BettingProject.Controllers
 
         private bool UserExists(string id)
         {
-            return (_context.User?.Any(e => e.Username == id)).GetValueOrDefault();
+            return (_context.Users?.Any(e => e.Username == id)).GetValueOrDefault();
         }
     }
 }

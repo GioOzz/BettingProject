@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+.loginform {
+  font-family: 'Numans', sans-serif;
+  border-radius: 25px;
+  display: inline;
+  height: 100%;
+  width: 100%;
+}
+
+.card {
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: rgba(29, 28, 28, 0.808) !important;
+  border-radius: 25px;
+  height: auto;
+  width: auto;
+}
+
+.card-header {
+  margin-top: 3vh;
+  margin-bottom: 2vh;
+  background-color: rgba(68, 206, 114, 0.623) !important;
+  border-radius: 25px;
+  align-items: center;
+  text-align: center;
+}
+
+.card-footer {
+  margin-top: 5vh;
+  background-color: rgba(209, 209, 209, 0.623) !important;
+  text-align: center;
+  border-radius: 25px;
+}
+
+.social_icon span {
+  font-size: 50px;
+  margin-left: 10px;
+  color: #1e9131;
+}
+
+.social_icon span:hover {
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.social_icon {
+  position: absolute;
+  right: 20px;
+  top: -45px;
+}
+
+.input-group-prepend span {
+  width: 25px;
+  background-color: #247e33;
+  color: black;
+  border: 0 !important;
+  align-content: flex-end;
+}
+
+input:focus {
+  outline: 0 0 0 0 !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.login_btn {
+  color: black;
+  background-color: #33ec52;
+  width: 100px;
+}
+
+.login_btn:hover {
+  color: white;
+  background-color: black;
+}
+
+.links {
+  color: white;
+}
+
+.links a {
+  margin-left: 4px;
+}
+
+
+
+.login,
+.image {
+  min-height: 100vh;
+}
+
+.bg-image {
+  background-image: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
+  background-size: cover;
+  background-position: center center;
+}

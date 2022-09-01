@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DataContext>(options =>
 {
-    options.UseSqlServer($@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Blogging;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;");
+    options.UseSqlServer($@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FootballBetDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False;");
 });
 var app = builder.Build();
 

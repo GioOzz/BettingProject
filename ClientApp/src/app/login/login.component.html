@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+  integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="col-md-6 d-none d-md-flex bg-image"></div>
+    <div class="col-md-6 bg-light">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-10 col-xl-7 mx-auto">
+              <h3>Betting Project®</h3>
+              <div class="card-header">
+                <h3>Sign In</h3>
+                <div class="d-flex justify-content-end social_icon">
+                  <a href="https://github.com/GioOzz" target="_blank"><span><i
+                        class="fab fa-github-square"></i></span></a>
+                  <a href="https://www.linkedin.com/in/ozzolagiorgio/" target=_blank><span><i
+                        class="fab fa-linkedin"></i></span></a>
+                </div>
+              </div>
+              <div class="card-body">
+                <form name="form" *ngIf="!isLoggedIn" #f="ngForm" (ngSubmit)="f.form.valid && submit()" novalidate>
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"> <i class="fas fa-user"></i></span>
+                    </div>
+                    <input type="text" required class="form-control" placeholder="Username" [(ngModel)]="form.username"
+                      #username="ngModel" name="username" minlength="4" maxlength="20" />
+                  </div>
+                  <div class="alert alert-danger" role="alert" *ngIf="username.errors?.required && f.submitted">
+                    Username is required!</div>
+                  <div class="alert alert-danger" *ngIf="username.errors?.minlength">Username must be at least 4
+                    characters</div>
+                  <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-key"></i></span>
+                    </div>
+                    <input type="password" class="form-control" placeholder="Password" name="password"
+                      [(ngModel)]="form.password" #password="ngModel" minlength="6" />
+                  </div>
+                  <div class="alert alert-danger" role="alert" *ngIf="password.errors && f.submitted">
+                    <div *ngIf="password.errors.required">Password is required</div>
+                    <div *ngIf="password.errors.minlength">Password must be at least 6 characters
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">Login
+                      failed:{{errorMessage}}</div>
+                    <input type="submit" value="Login" class="btn float-right login_btn" />
+                  </div>
+                </form>
+                <div class="alert alert-success" *ngIf="isLoggedIn">
+                  Logged in as {{ permission }}. </div>
+                </div>
+                <div class="card-footer">
+                  Forgot the password? &nbsp; <a href="/register">Sign Up here</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
