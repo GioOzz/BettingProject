@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../environments/environment';
 import { UserService, TokenStorageService } from '../UserService';
 @Component({
   selector: 'login',
@@ -17,9 +18,12 @@ export class LoginComponent implements OnInit {
     if (this.tokenService.getToken()) {
       this.isLoggedIn = true;
       this.permission = this.tokenService.getUser().roles;
+      debugger;
     }
   }
-  submit() {
+  submit() {      
+    console.log(environment.API_TOKEN)
+    console.log(environment.PRIVATE_KEY)
     const { username, password } = this.form;
     this.userService.login(username, password).subscribe({
       next: data => {
