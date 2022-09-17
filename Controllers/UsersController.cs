@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using BettingProject.Data;
 using BettingProject.Model;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol;
+using Newtonsoft.Json;
 
 namespace BettingProject.Controllers
 {
@@ -21,15 +23,35 @@ namespace BettingProject.Controllers
             _context = context;
         }
 
-        // GET: Users
-        [HttpGet]
-        public ActionResult<IEnumerable<User>> GetUser()
+        [HttpGet("GetDbTokenByKey/{Key}")]
+        public object GetDbTokenByKey(string key)
         {
-            if (_context.Users == null)
+            return _context.ConfigKeys.Where(w => w.Key == key).ToArray()[0];
+        }
+
+        [HttpPost("NewUser")]
+        public ActionResult<User> NewUser([FromBody] RegisterUser userdata)
+        {
+            User user = new User()
             {
-                return NotFound();
-            }
-            return _context.Users.ToList();
+                Username = userdata.Username,
+                PasswordHash = userdata.PasswordHash,
+                Email = userdata.Email,
+                Permissions = "000000",
+                Wallet = 0.0,
+                DateCreated = DateTime.Now,
+                DateUpdate = DateTime.Now
+            };
+
+            if (_context.Users == null)
+                return Problem("Entity set 'DataContext.User'  is null.");
+            else if (UserExists(user.Username))
+                return Conflict();
+
+            _context.Users.Add(user);
+            _context.SaveChanges();
+
+            return CreatedAtAction("The new user has been created successfully! ", new { id = user.Username }, user);
         }
 
         // GET: api/Users/5
@@ -60,8 +82,6 @@ namespace BettingProject.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(user).State = EntityState.Modified;
-
             try
             {
                 await _context.SaveChangesAsync();
@@ -81,34 +101,7 @@ namespace BettingProject.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
-        {
-            if (_context.Users == null)
-            {
-                return Problem("Entity set 'DataContext.User'  is null.");
-            }
-            _context.Users.Add(user);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (UserExists(user.Username))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
 
-            return CreatedAtAction("GetUser", new { id = user.Username }, user);
-        }
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]

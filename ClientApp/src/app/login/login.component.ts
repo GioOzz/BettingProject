@@ -15,15 +15,13 @@ export class LoginComponent implements OnInit {
 
   constructor(private userService: UserService, private tokenService: TokenStorageService) { }
   ngOnInit(): void {
-    if (this.tokenService.getToken()) {
-      this.isLoggedIn = true;
-      this.permission = this.tokenService.getUser().roles;
-      debugger;
-    }
+    // if (this.tokenService.getToken()) {
+    //   this.isLoggedIn = true;
+    //   this.permission = this.tokenService.getUser().roles;
+    //   debugger;
+    // }
   }
   submit() {      
-    console.log(environment.API_TOKEN)
-    console.log(environment.PRIVATE_KEY)
     const { username, password } = this.form;
     this.userService.login(username, password).subscribe({
       next: data => {

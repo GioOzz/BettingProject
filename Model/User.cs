@@ -14,4 +14,10 @@ namespace BettingProject.Model
         public DateTime DateUpdate { get; set; }
 
     }
+    public class RegisterUser
+    {
+        public string Username { get; set; }
+        public string PasswordHash { get; set; }
+        public string Email { get; set; }
+    }
 }

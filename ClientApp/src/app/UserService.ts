@@ -1,11 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-import { environment } from '../environments/environment';
-// import * as CryptoJS from 'crypto-js';
+const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8', 'Access-Control-Allow-Origin': '*' }) };
+import * as crypto from 'crypto-js';
 //import { Http, Headers, RequestOptions } from '@angular/http';
-
+const apiUrl = 'https://localhost:4000/Users/'
 
 @Injectable({
   providedIn: 'root'
@@ -14,48 +13,31 @@ export class UserService {
   _http: HttpClient;
   _currentuser: CurrentUser;
   _baseUrl: string;
+  _publicKey: any;
   private _privateKey = localStorage.getItem("private");
-  private _publicKey = localStorage.getItem("public");
-  
-  
+
+
   constructor(@Inject('BASE_URL') baseUrl: string, private http: HttpClient, currentuser: CurrentUser) {
-    debugger;
     this._http = http;
     this._currentuser = currentuser;
     this._baseUrl = baseUrl;
+    this.http.get<ConfigKey>(apiUrl + 'GetDbTokenByKey/' + 'PUBLIC_KEY').subscribe((config: any) => { this._publicKey = config.value;});
     localStorage.clear();
   }
-  
 
-  
-  login(username: string, password: string): Observable<any> {
-    // debugger
-    return this.http.post(this._baseUrl + 'api/login/Signin', {
+  register(username: string, password: string, email: string) {
+    var cryptedpsw = crypto.AES.encrypt(crypto.enc.Utf8.parse(password), this._publicKey).toString();
+    console.log(cryptedpsw);
+    return this.http.post(apiUrl + 'NewUser', {
       username,
-      password
+      cryptedpsw,
+      email
     }, httpOptions);
   }
 
-  // return this.http.get(this._baseUrl + LoginAPI + this.inputCredentals()).subscribe((res: any) => {
-  //     if (res.idUser == 1) {
-  //         var payload = res;
-  //         localStorage.setItem("IdApiUser", res.idUser);
-  //         this.trueUser()
-  //     }
-  //     else
-  //         alert("USER FALSISSIMO");
-  //     //modal RE-Try
-  // });
-  register(username: string, password: string, email: string): Observable<any> {
-
-    try {
-      //return CryptoJS.AES.encrypt(JSON.stringify(password), dotenv.PRIVATE_KEY).toString();
-    } catch (e) {
-      console.log(e);
-    }
-    return this.http.post(this._baseUrl + 'api/login/signup', {
+  login(username: string, password: string): Observable<any> {
+    return this.http.post(this._baseUrl + 'api/login/Signin', {
       username,
-      email,
       password
     }, httpOptions);
   }
@@ -87,42 +69,29 @@ export class TokenStorageService {
   signOut(): void {
     window.sessionStorage.clear();
   }
-  public saveToken(token: string): void {
-    window.sessionStorage.removeItem(TOKEN_KEY);
-    window.sessionStorage.setItem(TOKEN_KEY, token);
-  }
-  public getToken(): string | null {
-    return window.sessionStorage.getItem(TOKEN_KEY);
-  }
   public saveUser(user: any): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
-  public getUser(): any {
-    const user = window.sessionStorage.getItem(USER_KEY);
-    if (user) {
-      return JSON.parse(user);
-    }
-    return {};
-  }
+
 }
 
-const API_URL = 'http://localhost:44447/api/login/';
-@Injectable({
-  providedIn: 'root'
-})
-export class ResourceService {
-  constructor(private http: HttpClient) { }
-  getPublicContent(): Observable<any> {
-    return this.http.get(API_URL + 'all', { responseType: 'text' });
-  }
-  getUserBoard(): Observable<any> {
-    return this.http.get(API_URL + 'user', { responseType: 'text' });
-  }
-  getModeratorBoard(): Observable<any> {
-    return this.http.get(API_URL + 'mod', { responseType: 'text' });
-  }
-  getAdminBoard(): Observable<any> {
-    return this.http.get(API_URL + 'admin', { responseType: 'text' });
-  }
+// export class ResourceService {
+//   constructor(private http: HttpClient) { }
+//   getPublicContent(): Observable<any> {
+//     return this.http.get(API_URL + 'all', { responseType: 'text' });
+//   }
+//   getUserBoard(): Observable<any> {
+//     return this.http.get(API_URL + 'user', { responseType: 'text' });
+//   }
+//   getModeratorBoard(): Observable<any> {
+//     return this.http.get(API_URL + 'mod', { responseType: 'text' });
+//   }
+//   getAdminBoard(): Observable<any> {
+//     return this.http.get(API_URL + 'admin', { responseType: 'text' });
+//   }
+interface ConfigKey {
+  IdConfig: Int32Array,
+  Key: string,
+  Value: string
 }
