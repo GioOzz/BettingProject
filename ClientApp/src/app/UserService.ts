@@ -14,18 +14,18 @@ export class UserService {
   _http: HttpClient;
   _currentuser: CurrentUser;
   _baseUrl: string;
-  _privateKey: any;
-
+  private _privateKey = localStorage.getItem("private");
+  private _publicKey = localStorage.getItem("public");
+  
+  
   constructor(@Inject('BASE_URL') baseUrl: string, private http: HttpClient, currentuser: CurrentUser) {
+    debugger;
     this._http = http;
     this._currentuser = currentuser;
     this._baseUrl = baseUrl;
-    // debugger;
-    
-    //this._privateKey = environment.PRIVATE_KEY;
-    //console.log(this._privateKey);
+    localStorage.clear();
   }
-
+  
 
   
   login(username: string, password: string): Observable<any> {

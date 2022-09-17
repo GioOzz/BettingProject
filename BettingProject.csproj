@@ -24,9 +24,106 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\.angular\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\.angular\**" />
+    <EmbeddedResource Remove="ClientApp\.angular\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\.angular\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\0a2196c1c890bb5221bbbd7c388ede9b26fc988b\0.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\0a2196c1c890bb5221bbbd7c388ede9b26fc988b\index.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\63e55d4d49dfc717889c5cc4411472b4bd08b85c\0.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\63e55d4d49dfc717889c5cc4411472b4bd08b85c\1.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\63e55d4d49dfc717889c5cc4411472b4bd08b85c\2.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\63e55d4d49dfc717889c5cc4411472b4bd08b85c\3.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\63e55d4d49dfc717889c5cc4411472b4bd08b85c\4.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\63e55d4d49dfc717889c5cc4411472b4bd08b85c\5.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\63e55d4d49dfc717889c5cc4411472b4bd08b85c\6.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\63e55d4d49dfc717889c5cc4411472b4bd08b85c\7.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\63e55d4d49dfc717889c5cc4411472b4bd08b85c\8.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\63e55d4d49dfc717889c5cc4411472b4bd08b85c\9.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\63e55d4d49dfc717889c5cc4411472b4bd08b85c\index.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\63e55d4d49dfc717889c5cc4411472b4bd08b85c\index.pack.old" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\6c32a42f475320aba695f3d72cf4ad44f6414573\0.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\6c32a42f475320aba695f3d72cf4ad44f6414573\index.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\0.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\1.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\10.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\11.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\12.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\13.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\14.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\15.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\16.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\17.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\18.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\2.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\3.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\4.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\5.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\6.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\7.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\8.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\9.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\index.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\8b7296d0a688b0d8a963f2c6320f043efc349a32\index.pack.old" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\ba31cb46742fafb32474ce15ca439e2c5fefd162\0.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\ba31cb46742fafb32474ce15ca439e2c5fefd162\1.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\ba31cb46742fafb32474ce15ca439e2c5fefd162\2.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\ba31cb46742fafb32474ce15ca439e2c5fefd162\index.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\ba31cb46742fafb32474ce15ca439e2c5fefd162\index.pack.old" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\be7cbb0d8f3f9f3e079b52fa01ba42b11f0a8448\0.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\be7cbb0d8f3f9f3e079b52fa01ba42b11f0a8448\1.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\be7cbb0d8f3f9f3e079b52fa01ba42b11f0a8448\2.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\be7cbb0d8f3f9f3e079b52fa01ba42b11f0a8448\3.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\be7cbb0d8f3f9f3e079b52fa01ba42b11f0a8448\4.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\be7cbb0d8f3f9f3e079b52fa01ba42b11f0a8448\5.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\be7cbb0d8f3f9f3e079b52fa01ba42b11f0a8448\6.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\be7cbb0d8f3f9f3e079b52fa01ba42b11f0a8448\index.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\be7cbb0d8f3f9f3e079b52fa01ba42b11f0a8448\index.pack.old" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\cacae0e81845e6aebb9d331a2e166359285a7584\0.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\cacae0e81845e6aebb9d331a2e166359285a7584\1.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\cacae0e81845e6aebb9d331a2e166359285a7584\2.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\cacae0e81845e6aebb9d331a2e166359285a7584\3.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\cacae0e81845e6aebb9d331a2e166359285a7584\4.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\cacae0e81845e6aebb9d331a2e166359285a7584\5.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\cacae0e81845e6aebb9d331a2e166359285a7584\6.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\cacae0e81845e6aebb9d331a2e166359285a7584\7.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\cacae0e81845e6aebb9d331a2e166359285a7584\8.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\cacae0e81845e6aebb9d331a2e166359285a7584\9.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\cacae0e81845e6aebb9d331a2e166359285a7584\index.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\cacae0e81845e6aebb9d331a2e166359285a7584\index.pack.old" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\e5f85088209ea43ecc4a7bfc4c4c716cd4cc9e47\0.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\e5f85088209ea43ecc4a7bfc4c4c716cd4cc9e47\index.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\f566b74e295b5cf171c0a3e4506af65ab8015e1e\0.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\angular-webpack\f566b74e295b5cf171c0a3e4506af65ab8015e1e\index.pack" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\1f102832f76775112198cc0f08d25ece.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\25560c3e330c5d1823ee361eb162db7f.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\347f81c6dd4b3d33367cdeb605b636d9.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\42c2fc2e2a714b7d9fb80a7009a4599e.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\5753a5764ad5f5bfba663bd9c88d2ec3.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\6799016e8dd5c714b67da3e1f4ef668e.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\6884e2ecf41ebe99ba232385a7ed849f.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\7a8566121f4cddb81343fe823c4c8872.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\8038a9961687ff8c2e16bed642431905.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\82398187bec853bf2058ad1c24cc65b4.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\850f5e7dd48131b019f7f7e93db0fb40.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\8918d3912d8521fe697ba1586186349d.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\8e93de926af3a11b5923af1abec27b4c.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\8ff98777f7c3a2787932eccd2f5b301f.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\96bd43d50f58d53eb1fc41cd3aa58606.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\a3aca87bd69e420b20d33e90b0a22907.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\a55e7c24e826589f6e93c7e977bca9d2.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\b8ffcbf8b251eddb6efdaeffac7548f0.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\bd9e63d6f4dd26ec6a1f38269c65d15e.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\befccb7251f96c731986bb83d999d9c1.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\c30c2911e782820424bfcc26405bccb7.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\cb633dfd8a9c9b9cb426a836ad0a47f1.json" />
+    <None Remove="ClientApp\.angular\cache\13.3.4\babel-webpack\f216765e295c2b8a65955fe0d05defd2.json" />
   </ItemGroup>
 
   <ItemGroup>
