@@ -27,8 +27,13 @@ export class RegisterComponent {
         this.isSignUpFailed = false;
       },
       error: (err) => {
-        this.errorMessage = '\n' + err.message;
         this.isSignUpFailed = true;
+        if (err.status == 409)
+          this.errorMessage += "User already exist";
+        else if (err.status == 404)
+          this.errorMessage += "Couldn't complete the process, sorry!";
+        else
+          this.errorMessage += err.message;
       }
     });
   }

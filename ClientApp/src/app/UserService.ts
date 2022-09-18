@@ -21,7 +21,7 @@ export class UserService {
     this._http = http;
     this._currentuser = currentuser;
     this._baseUrl = baseUrl;
-    this.http.get<ConfigKey>(apiUrl + 'GetDbTokenByKey/' + 'PUBLIC_KEY').subscribe((config: any) => { this._publicKey = config.value;});
+    this.http.get<ConfigKey>(apiUrl + 'GetDbTokenByKey/' + 'PUBLIC_KEY').subscribe((config: any) => { this._publicKey = config.value; });
     localStorage.clear();
   }
 
@@ -29,10 +29,10 @@ export class UserService {
     var cryptedpsw = crypto.AES.encrypt(crypto.enc.Utf8.parse(password), this._publicKey).toString();
     console.log(cryptedpsw);
     return this.http.post(apiUrl + 'NewUser', {
-      username,
-      cryptedpsw,
-      email
-    }, httpOptions);
+      "Username" : username,
+      "PasswordHash" : cryptedpsw,
+      "Email" : email
+    }, httpOptions);    
   }
 
   login(username: string, password: string): Observable<any> {

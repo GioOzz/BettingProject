@@ -17,7 +17,8 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="bi bi-people"></i></span>
               </div>
-              <input required type="text" username class="form-control" placeholder="Username" name="username" [(ngModel)]="form.username"  minlength="3" maxlength="20" #username="ngModel"/>
+              <input required type="text" username class="form-control" placeholder="Username" name="username"
+                [(ngModel)]="form.username" minlength="3" maxlength="20" #username="ngModel" />
               <div class="alert-danger" *ngIf="username.errors && f.submitted">
                 <div *ngIf="username.errors?.required">Username is required</div>
                 <div *ngIf="username.errors?.minlength">Username must be at least 3 characters </div>
@@ -28,7 +29,8 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="bi bi-key"></i></span>
               </div>
-              <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="form.password" required password minlength="6" #password="ngModel" />
+              <input type="password" class="form-control" placeholder="Password" name="password"
+                [(ngModel)]="form.password" required password minlength="6" #password="ngModel" />
               <div class="alert-danger" *ngIf="password.errors && f.submitted">
                 <div *ngIf="password.errors?.required">Password is required</div>
                 <div *ngIf="password.errors?.minlength"> Password must be at least 6 characters
@@ -39,7 +41,8 @@
               <div class="input-group-prepend">
                 <span class="input-group-text"><i class="bi bi-envelope"></i></span>
               </div>
-              <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="form.email" required email #email="ngModel"/>
+              <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="form.email"
+                required email #email="ngModel" />
               <div class="alert-danger" *ngIf="email.errors && f.submitted">
                 <div *ngIf="email.errors?.required">Email is required</div>
                 <div *ngIf="email.errors?.email"> Email must be a valid email address </div>
@@ -49,8 +52,15 @@
               <input type="submit" value="Create" class="btn float-right login_btn" />
             </div>
             <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">Signup failed!<br />{{ errorMessage }}</div>
+            <div *ngIf="f.submitted && isSignUpFailed"><a class="links" href="/register">Retry with other credentials?
+                &nbsp;</a> </div>
           </form>
-          <div class="alert alert-success" *ngIf="isSuccessful"> Welcome <b>{{form.controls.username.value}}!</b><br>Your registration has been successfully completed!</div>
+          <div class="alert alert-success" *ngIf="isSuccessful"><b>
+              <h1>Sing Up COMPLETED !</h1>
+            </b><br> <b>
+              <h3>Welcome {{ form.username }} !</h3>
+            </b><br>Your registration has been successfully completed!</div>
+          <div style="margin-left: 28%;" *ngIf="isSuccessful"><a class="links" href="">Go back to the login page &nbsp;</a> </div>
         </div>
       </div>
     </div>
